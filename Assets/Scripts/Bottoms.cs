@@ -16,6 +16,7 @@ public class Bottoms : MonoBehaviour
         SceneManager.LoadScene("Games");
         PlayerPrefs.SetInt("level", 0);
         PlayerPrefs.SetInt("dead", 0);
+        PlayerPrefs.SetInt("deadRecord", 0);
     }
 
     public void Menu()

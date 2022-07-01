@@ -54,6 +54,7 @@ public class SpawnEnemys : MonoBehaviour
 
         // PlayerPrefs.SetInt("count", 0);
         // _count = PlayerPrefs.GetInt("count");
+        PlayerPrefs.SetInt("deadRecord", 0);
         
         panelGameOver.SetActive(false);
         
@@ -267,7 +268,7 @@ public class SpawnEnemys : MonoBehaviour
                     if (PlayerPrefs.GetInt("dead") > _dead)
                     {
                         _tmp = PlayerPrefs.GetInt("dead") % (int)_dead;
-                        levelCount += _tmp;
+                        levelCount++;
                         PlayerPrefs.SetInt("level", levelCount);
                         levelCount = PlayerPrefs.GetInt("level");
                         levelText.text = "" + PlayerPrefs.GetInt("level") + "";
@@ -290,7 +291,6 @@ public class SpawnEnemys : MonoBehaviour
         {
             StopCoroutine(SpawnEnemy());
             panelGameOver.SetActive(true);
-            print("Game Over");
         }
     }
 }

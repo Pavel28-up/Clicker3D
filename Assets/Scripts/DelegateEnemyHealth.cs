@@ -10,6 +10,7 @@ public class DelegateEnemyHealth : MonoBehaviour
     public int damage;
     public int count;
     public int enem;
+    public int enemRec;
 
     private Enemy _health;
 
@@ -30,14 +31,10 @@ public class DelegateEnemyHealth : MonoBehaviour
 
     void Update()
     {
+        enemRec = PlayerPrefs.GetInt("deadRecord");
         Booms();
         count = PlayerPrefs.GetInt("count");
         damage = PlayerPrefs.GetInt("damag");
-        // if (PlayerPrefs.GetInt("Boom") == 0)
-        // {
-        //     _health.health -= 100;
-            
-        // }
     }
 
     public void OnMouseDown()
@@ -54,6 +51,8 @@ public class DelegateEnemyHealth : MonoBehaviour
             {
                 enem = PlayerPrefs.GetInt("dead");
                 enem++;
+                enemRec++;
+                PlayerPrefs.SetInt("deadRecord", enemRec);
                 PlayerPrefs.SetInt("dead", enem);
                 count--;
                 PlayerPrefs.SetInt("count", count);
@@ -77,9 +76,10 @@ public class DelegateEnemyHealth : MonoBehaviour
             {
                 enem = PlayerPrefs.GetInt("dead");
                 enem++;
+                enemRec++;
+                PlayerPrefs.SetInt("deadRecord", enemRec);
                 PlayerPrefs.SetInt("dead", enem);
                 count -= count;
-                print("dead " + count);
                 PlayerPrefs.SetInt("count", count);
                 Destroy(gameObject);
             }
